@@ -1,0 +1,12 @@
+{
+  "extends": "@tsconfig/next/tsconfig.json",
+  "include": [
+    "../next-chatic/next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
