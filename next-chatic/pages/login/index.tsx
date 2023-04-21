@@ -7,6 +7,7 @@ import {
   Center,
   Flex,
   VStack,
+  Spinner,
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -21,6 +22,7 @@ import { authService } from '../../services/authService';
 import { userService } from '../../services/userService';
 
 export default function Login() {
+  const [isLoading, setIsLoading] = useState(false);
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -36,6 +38,7 @@ export default function Login() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     const { email, password } = values;
 
     try {
@@ -43,8 +46,10 @@ export default function Login() {
       accessTokenService.save(accessToken);
       userService.save(user);
       router.replace('/');
+      setIsLoading(false);
     } catch (error: any) {
       toast.error(error.response.data.message, toastOptions);
+      setIsLoading(false);
     }
   };
 
@@ -80,7 +85,9 @@ export default function Login() {
                 name="password"
                 onChange={handleChange}
               />
-              <Button width="100%" type="submit" colorScheme="teal">Login</Button>
+              <Button width="100%" type="submit" colorScheme="teal">
+                {isLoading ? <Spinner /> : 'Login'}
+              </Button>
             </VStack>
           </form>
           <Center mt={3}>
