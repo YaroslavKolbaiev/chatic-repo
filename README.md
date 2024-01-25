@@ -6,7 +6,7 @@ Front-End developed with [NextJS](https://nextjs.org/docs)
 
 Back-End wtih [NodeJS](https://nodejs.org/)
 
-Hosted on [Netlify](https://www.netlify.com) and [Render](https://render.com/)
+Hosted on [Netlify](https://www.netlify.com) and [GoogleCloud](https://cloud.google.com/)
 
 ## Technologies used in current project
 
